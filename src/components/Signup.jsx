@@ -38,7 +38,7 @@ const SignUp = () => {
       .then((data) => {
         console.log("data", data);
         console.log("user sucessfully registered");
-      //  history.push('/login')
+        history.push('/login')
       })
       .catch((e) => alert(e.message));
 
