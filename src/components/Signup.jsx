@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
     const history = useHistory()
@@ -9,42 +10,47 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const submitHandler = (e) => {
     e.preventDefault();
-    let url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_WEB_API}`;
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify({
-        email: email,
-        password: confirmPassword,
-        returnSecureToken: true,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return res.json().then((data) => {
-            let errorMessage = "some error occured..";
-            if (data && data.error && data.error.errors[0].message) {
-              errorMessage = data.error.errors[0].message;
+    if(password===confirmPassword){
+        let url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_WEB_API}`;
+        fetch(url, {
+          method: "POST",
+          body: JSON.stringify({
+            email: email,
+            password: confirmPassword,
+            returnSecureToken: true,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            } else {
+              return res.json().then((data) => {
+                let errorMessage = "some error occured..";
+                if (data && data.error && data.error.errors[0].message) {
+                  errorMessage = data.error.errors[0].message;
+                }
+    
+                throw new Error(errorMessage);
+              });
             }
-
-            throw new Error(errorMessage);
-          });
-        }
-      })
-      .then((data) => {
-        console.log("data", data);
-        console.log("user sucessfully registered");
-        history.push('/login')
-      })
-      .catch((e) => alert(e.message));
-
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
+          })
+          .then((data) => {
+            console.log("data", data);
+            console.log("user sucessfully registered");
+            history.push('/login')
+          })
+          .catch((e) => alert(e.message));
+    
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+    }else{
+        alert("passwords not matching")
+    }
+   
   };
   return (
     <>
@@ -86,6 +92,9 @@ const SignUp = () => {
           <Button className="d-block mx-auto" variant="primary" type="submit">
             Submit
           </Button>
+          <Link to="/login">
+          <Button className="mt-3" variant="outline-primary">Have an Account? Log In?</Button>
+        </Link>
         </Form>
       </Container>
     </>

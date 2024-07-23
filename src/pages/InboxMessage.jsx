@@ -1,12 +1,10 @@
 import React from 'react'
 import Banner from "../components/Banner"
 import Welcome from '../components/Welcome'
-
-import Inbox from '../components/Inbox'
 import SideBar from '../components/SideBar'
 import { Container, Row, Col } from 'react-bootstrap';
-
-const WelcomePage = () => {
+import InBoxMsg from '../components/InBoxMsg';
+const InboxMessage = () => {
   return (
     <>
     <Banner />
@@ -21,7 +19,7 @@ const WelcomePage = () => {
        
         </Col>
         <Col  xs={10}>
-        <Inbox />
+         <InBoxMsg />
       
         </Col>
       </Row>
@@ -30,4 +28,4 @@ const WelcomePage = () => {
   )
 }
 
-export default WelcomePage
+export default InboxMessage

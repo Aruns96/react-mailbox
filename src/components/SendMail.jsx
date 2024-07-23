@@ -16,7 +16,7 @@ const SendMail = () => {
            const response = await fetch(`${url}/send/${sender}.json`,{
             method:'POST',
             body:JSON.stringify({
-                from:sender,
+               
                 to:to,
                 subject:subject,
                 message:editorState.getCurrentContent().getPlainText()
@@ -37,9 +37,10 @@ const SendMail = () => {
             method:'POST',
             body:JSON.stringify({
                 from:sender,
-                to:to,
+                
                 subject:subject,
-                message:editorState.getCurrentContent().getPlainText()
+                message:editorState.getCurrentContent().getPlainText(),
+                read:false
             }),
             headers: {
                 "Content-Type": "application/json",
@@ -56,6 +57,7 @@ const SendMail = () => {
     e.preventDefault();
     dataSendMail()
     dataInBoxMail()
+    alert("msg sent")
     setTo("")
     setSubject("")
     setEditorState("")

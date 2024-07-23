@@ -49,7 +49,7 @@ const Login = () => {
       .then((data) => {
         // console.log("token",data)
         localStorage.setItem("token", data.idToken);
-        localStorage.setItem("userID", data.localId);
+       // localStorage.setItem("userID", data.localId);
         localStorage.setItem("email", data.email);
         //localStorage.setItem("email",enteredEmail)
         alert("login success");
@@ -89,7 +89,7 @@ const Login = () => {
             >
               Login
             </Button>
-            <Link to="/forgotpassword">Forgot Passoword</Link>
+            <Link to="/signup">create new accout</Link>
           </div>
         </Form>
       </Container>
