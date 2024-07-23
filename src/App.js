@@ -4,6 +4,7 @@ import './App.css';
 import Signup from './pages/Signup';
 import LoginPage from "./pages/LoginPage"
 import WelcomePage from "./pages/WelcomePage";
+import ComposeMail from "./pages/ComposeMail"
 
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
       </Route>
       <Route path="/welcome">
         <WelcomePage />
+      </Route>
+      <Route path="/compose">
+        <ComposeMail />
       </Route>
     </Switch>
   );

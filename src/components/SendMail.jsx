@@ -16,6 +16,7 @@ const SendMail = () => {
            const response = await fetch(`${url}/send/${sender}.json`,{
             method:'POST',
             body:JSON.stringify({
+                from:sender,
                 to:to,
                 subject:subject,
                 message:editorState.getCurrentContent().getPlainText()
@@ -35,6 +36,7 @@ const SendMail = () => {
            const response = await fetch(`${url}/inbox/${receiver}.json`,{
             method:'POST',
             body:JSON.stringify({
+                from:sender,
                 to:to,
                 subject:subject,
                 message:editorState.getCurrentContent().getPlainText()
