@@ -8,6 +8,7 @@ const totalUnread = (inboxData) => {
 const initialState ={
     inboxData:[],
     unread:0,
+    sendboxData:[]
     
 }
 
@@ -25,7 +26,11 @@ const EmailReducer=createSlice({
         deleteInBox(state,action){
             state.inboxData = state.inboxData.filter(msg=>msg.id!==action.payload)
             state.unread=totalUnread(state.inboxData)
-        }
+        },
+        changeSendbox(state,action){
+            state.sendboxData=action.payload
+            
+        },
         
 
     }

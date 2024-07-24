@@ -16,7 +16,9 @@ const SideBar = () => {
       <NavLink to="/welcome">
         Inbox <span className="badge bg-primary float-end">{unread}</span>
       </NavLink>
-     
+      <NavLink to="/send">
+        Sent 
+      </NavLink>
      
       
     </Nav>

@@ -6,7 +6,8 @@ import LoginPage from "./pages/LoginPage"
 import WelcomePage from "./pages/WelcomePage";
 import ComposeMail from "./pages/ComposeMail"
 import InboxMessage from "./pages/InboxMessage"
-
+import SentBox from "./pages/SentBox"
+import SentBoxMessage from './pages/SentBoxMessage';
 function App() {
   const isLogin = localStorage.getItem("token");
   let url;
@@ -35,6 +36,13 @@ function App() {
       <Route path="/inbox/:id">
         <InboxMessage />
       </Route>
+      <Route path="/send">
+        <SentBox />
+      </Route>
+      <Route  path="/sendmsgs/:id" >
+        <SentBoxMessage />
+      </Route>
+
     </Switch>
   );
 }
