@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from 'react'
 import { ListGroup,Row,Col,Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { BsBullseye } from "react-icons/bs";
+
 import { useDispatch, useSelector } from 'react-redux';
 import { EmailActions } from '../store/Email';
+import useFetch from "../hooks/useFetch"
 
 const Sentbox = () => {
     const dispatch = useDispatch()
@@ -36,7 +37,22 @@ const Sentbox = () => {
     getMail()
    
     },[])
-   
+    //  let url1 = `${url}/send/${user}.json`
+    //  const data = useFetch(url1)
+    // console.log(data)
+    //  let arr = [];
+    //     for (let key in data) {
+    //       arr.push({
+    //         id: key,
+    //         from: data[key].from,
+    //         message: data[key].message,
+    //         subject: data[key].subject,
+    //         to:data[key].to,
+    //         read:data[key].read
+    //       });
+    //     }
+    //     console.log(arr)
+         //dispatch(EmailActions.changeSendbox(arr))
 
   return (
     <Card className="w-75 mb-auto " style={{backgroundColor:'rgb(33,37,41)',color:'white'}}>
