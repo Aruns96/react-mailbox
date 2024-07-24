@@ -41,6 +41,16 @@ const Inbox = () => {
     //   //setEmails(emails.map(email => ({ ...email, unread: false })));
     // }
     },[])
+
+    useEffect(() => {
+      const intervalId = setInterval(() => {
+        getMail();
+      }, 2000);
+  
+      return () => {
+        clearInterval(intervalId);
+      };
+    }, []);
     const deleteHandler = async(id)=>{
       try{
         let url = "https://react-http-b0681-default-rtdb.firebaseio.com"
